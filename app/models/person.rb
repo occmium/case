@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  has_many :declensions, dependent: :destroy
+
   validates :first_name, presence: true,
                          format: { with: /\A[а-яё-]+\z/i }
 

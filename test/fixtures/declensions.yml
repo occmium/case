@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  declension_case: MyString
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  full_name: MyString
+  person: one
+
+two:
+  declension_case: MyString
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  full_name: MyString
+  person: two

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_14_152716) do
+ActiveRecord::Schema.define(version: 2020_02_14_154446) do
+
+  create_table "declensions", force: :cascade do |t|
+    t.string "declension_case"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
+    t.string "full_name"
+    t.integer "person_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_declensions_on_person_id"
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "first_name", null: false
