@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Middle name</th>
+      <th>Sex</th>
+      <th>Full name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><strong>Nominative: (MAIN)</strong></td>
+      <td><%= @person.first_name %></td>
+      <td><%= @person.last_name %></td>
+      <td><%= @person.middle_name %></td>
+      <td><%= @person.sex %></td>
+      <td><%= @person.full_name %></td>
+    </tr>
+
+    <% 5.times do |i| %>
+      <tr>
+        <td><strong><%= i + 1 %>:</strong></td>
+        <td><%= @person.first_name %></td>
+        <td><%= @person.last_name %></td>
+        <td><%= @person.middle_name %></td>
+        <td colspan="1"></td>
+        <td><%= @person.full_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
