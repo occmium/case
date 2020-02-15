@@ -10,7 +10,6 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
-    @names = @person.declensions
   end
 
   # GET /people/new
@@ -29,9 +28,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-
         DeclensionCreatorService.new(@person)
-
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -46,6 +43,7 @@ class PeopleController < ApplicationController
   def update
     respond_to do |format|
       if @person.update(person_params)
+        DeclensionCreatorService.new(@person)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
         format.json { render :show, status: :ok, location: @person }
       else
@@ -69,6 +67,7 @@ class PeopleController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_person
       @person = Person.find(params[:id])
+      @declensions = @person.declensions
     end
 
     # Only allow a list of trusted parameters through.
