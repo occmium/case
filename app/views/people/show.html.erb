@@ -22,14 +22,14 @@
       <td><%= @person.full_name %></td>
     </tr>
 
-    <% 5.times do |i| %>
+    <% @names.each do |declension| %>
       <tr>
-        <td><strong><%= i + 1 %>:</strong></td>
-        <td><%= @person.first_name %></td>
-        <td><%= @person.last_name %></td>
-        <td><%= @person.middle_name %></td>
+        <td><strong><%= declension.declension_case.capitalize %>:</strong></td>
+        <td><%= @names.where(declension_case: declension.declension_case).first.first_name %></td>
+        <td><%= @names.where(declension_case: declension.declension_case).first.last_name %></td>
+        <td><%= @names.where(declension_case: declension.declension_case).first.middle_name %></td>
         <td colspan="1"></td>
-        <td><%= @person.full_name %></td>
+        <td><%= @names.where(declension_case: declension.declension_case).first.full_name %></td>
       </tr>
     <% end %>
   </tbody>
