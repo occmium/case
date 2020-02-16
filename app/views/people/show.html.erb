@@ -1,15 +1,15 @@
-<% a_a_p = 'activerecord.attributes.person.' %>
+<% ar_a_p = 'activerecord.attributes.person.' %>
 <p id="notice"><%= notice %></p>
 
 <table>
   <thead>
     <tr>
       <th><%= t('activerecord.attributes.declension.declension_case') %></th>
-      <th><%= t("#{a_a_p}first_name") %></th>
-      <th><%= t("#{a_a_p}last_name") %></th>
-      <th><%= t("#{a_a_p}middle_name") %></th>
-      <th><%= t("#{a_a_p}sex") %></th>
-      <th><%= t("#{a_a_p}full_name") %></th>
+      <th><%= t("#{ar_a_p}first_name") %></th>
+      <th><%= t("#{ar_a_p}last_name") %></th>
+      <th><%= t("#{ar_a_p}middle_name") %></th>
+      <th><%= t("#{ar_a_p}sex") %></th>
+      <th><%= t("#{ar_a_p}full_name") %></th>
     </tr>
   </thead>
 
@@ -23,8 +23,8 @@
       <td><%= @person.first_name %></td>
       <td><%= @person.last_name %></td>
       <td><%= @person.middle_name %></td>
-      <td><%= t("activerecord.attributes.person.#{@person.sex}") %></td>
-      <td><%= @person.full_name %></td>
+      <td><%= t("#{ar_a_p + (@person.sex ? @person.sex : 'none')}") %></td>
+      <td><%= @person.full_name.delete "none" %></td>
     </tr>
 
     <% @declensions.each do |declension| %>

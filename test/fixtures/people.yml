@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  middle_name: MyString
-  sex: MyString
-  full_name: MyString
+  first_name: Александр
+  last_name: Александров
+  middle_name: Александрович
+  sex: male
+  full_name: Александров Александр Александрович
 
 two:
-  first_name: MyString
-  last_name: MyString
-  middle_name: MyString
-  sex: MyString
-  full_name: MyString
+  first_name: Александра
+  last_name: Александрова
+  middle_name: Александровна
+  sex: female
+  full_name: Александрова Александра Александровна

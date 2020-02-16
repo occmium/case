@@ -34,11 +34,13 @@ class DeclensionCreatorService
       declensions_params = []
       declensions.each do |letter, word|
         full_name = doc.get_text("//#{letter}").to_s
+        last_name = full_name.split[0] == 'none' ? '' : full_name.split[0]
+        middle_name = full_name.split[2] == 'none' ? '' : full_name.split[2]
         declined_names = {person_id:       id,
-                          full_name:       full_name,
-                          last_name:       full_name.split[0],
+                          full_name:       full_name.delete("none"),
+                          last_name:       last_name,
                           first_name:      full_name.split[1],
-                          middle_name:     full_name.split[2],
+                          middle_name:     middle_name,
                           declension_case: word}
         declensions_params << declined_names
       end

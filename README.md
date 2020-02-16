@@ -10,6 +10,8 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+bundle update
+bundle install --without production
 
 * Database creation
 
