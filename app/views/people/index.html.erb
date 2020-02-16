@@ -1,16 +1,17 @@
+<% a_a_p = 'activerecord.attributes.person.' %>
 <p id="notice"><%= notice %></p>
 
-<h1>People</h1>
+<h3><%= t('app.views.people') %></h3>
 
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Middle name</th>
-      <th>Sex</th>
-      <th>Full name</th>
-      <th>Actions</th>
+      <th><%= t("#{a_a_p}first_name") %></th>
+      <th><%= t("#{a_a_p}last_name") %></th>
+      <th><%= t("#{a_a_p}middle_name") %></th>
+      <th><%= t("#{a_a_p}sex") %></th>
+      <th><%= t("#{a_a_p}full_name") %></th>
+      <th><%= t("#{a_a_p}actions") %></th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -23,9 +24,9 @@
         <td><%= person.middle_name %></td>
         <td><%= person.sex %></td>
         <td><%= person.full_name %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('app.views.show'), person %></td>
+        <td><%= link_to t('app.views.edit'), edit_person_path(person) %></td>
+        <td><%= link_to t('app.views.destroy'), person, method: :delete, data: { confirm: t('app.views.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+<%= link_to t('app.views.new_person'), new_person_path %>

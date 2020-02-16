@@ -1,7 +1,10 @@
 <%= form_with(model: person, local: true) do |form| %>
   <% if person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      <% count = person.errors.count %>
+      <h2>
+        <%= I18n.t("activerecord.attributes.person.mistake", count:count) %>:
+      </h2>
 
       <ul>
       <% person.errors.full_messages.each do |message| %>

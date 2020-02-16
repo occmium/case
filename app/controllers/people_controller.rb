@@ -29,7 +29,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         DeclensionCreatorService.new(@person)
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: I18n.t('controllers.people.created') }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.update(person_params)
         DeclensionCreatorService.new(@person)
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to @person, notice: I18n.t('controllers.people.updated') }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
+      format.html { redirect_to people_url, notice: I18n.t('controllers.people.destroyed') }
       format.json { head :no_content }
     end
   end

@@ -1,24 +1,29 @@
+<% a_a_p = 'activerecord.attributes.person.' %>
 <p id="notice"><%= notice %></p>
 
 <table>
   <thead>
     <tr>
-      <th colspan="1"></th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Middle name</th>
-      <th>Sex</th>
-      <th>Full name</th>
+      <th><%= t('activerecord.attributes.declension.declension_case') %></th>
+      <th><%= t("#{a_a_p}first_name") %></th>
+      <th><%= t("#{a_a_p}last_name") %></th>
+      <th><%= t("#{a_a_p}middle_name") %></th>
+      <th><%= t("#{a_a_p}sex") %></th>
+      <th><%= t("#{a_a_p}full_name") %></th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td><strong>Nominative: (MAIN)</strong></td>
+      <td>
+        <strong>
+          <%= t('app.views.nominative') %>:
+        </strong>
+      </td>
       <td><%= @person.first_name %></td>
       <td><%= @person.last_name %></td>
       <td><%= @person.middle_name %></td>
-      <td><%= @person.sex %></td>
+      <td><%= t("activerecord.attributes.person.#{@person.sex}") %></td>
       <td><%= @person.full_name %></td>
     </tr>
 
@@ -26,7 +31,7 @@
       <tr>
         <td>
           <strong>
-          <%= declension.declension_case.capitalize %>:
+          <%= t("activerecord.attributes.declension.#{declension.declension_case}") %>:
           </strong>
         </td>
         <td><%= declension.first_name %></td>
@@ -39,5 +44,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to t('app.views.edit'), edit_person_path(@person) %> |
+<%= link_to t('app.views.back'), people_path %>
