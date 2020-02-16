@@ -1,6 +1,6 @@
-<a name="to_lift"><h2>Case</h2></a>
+<a name="to_lift"><h2>[Case](http://declension-case.herokuapp.com)</h2></a>
 
-### Приложение для ведения списка персон и склонений их ФИО.
+### [Приложение](http://declension-case.herokuapp.com) для ведения списка персон и склонений их ФИО.
 
 #### Содержание
   - *[Задание](#task)*
