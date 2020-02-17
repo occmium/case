@@ -28,7 +28,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        DeclensionCreatorService.new(@person)
+        DeclinationService.run(@person).each { |declension| Declension.create(declension) }
         format.html { redirect_to @person, notice: I18n.t('controllers.people.created') }
         format.json { render :show, status: :created, location: @person }
       else
@@ -43,7 +43,10 @@ class PeopleController < ApplicationController
   def update
     respond_to do |format|
       if @person.update(person_params)
-        DeclensionCreatorService.new(@person)
+        DeclinationService.run(@person).each do |new_declension|
+          update_declination(new_declension)
+        end
+
         format.html { redirect_to @person, notice: I18n.t('controllers.people.updated') }
         format.json { render :show, status: :ok, location: @person }
       else
@@ -72,6 +75,13 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :middle_name, :sex, :full_name)
+      params.require(:person).permit(:first_name, :last_name, :middle_name, :sex)
+    end
+
+    def update_declination(hash_params)
+      @person.
+        declensions.
+        where(declension_case: hash_params[:declension_case]).
+        update(hash_params)
     end
 end
