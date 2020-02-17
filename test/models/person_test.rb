@@ -39,13 +39,14 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal "Васильев Вася Василич", @person.full_name
     assert_equal 3, @person.errors.count
   end
+
+  test "placeholders must be added to empty fields" do
+    @person.update(first_name: "Вася" * 3,
+                   last_name: "",
+                   middle_name: "")
+    @person.reload
+    assert_equal "ВасяВасяВася", @person.first_name
+    assert_equal "none ВасяВасяВася none", @person.full_name
+    assert @person.valid?
+  end
 end
-# test "placeholders must be added to empty fields" do
-#   @person.first_name = "Вася" * 3
-#   @person.last_name = ""
-#   @person.middle_name = ""
-#   @person.reload
-#   assert_equal "ВасяВасяВася", @person.first_name
-#   assert_equal "none ВасяВасяВася none!", @person.full_name
-#   assert @person.valid?
-# end

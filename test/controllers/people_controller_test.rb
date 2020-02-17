@@ -5,6 +5,18 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     @person = people(:one)
   end
 
+  test "should create five declensions" do
+    assert_difference 'Declension.count' , 5 do
+      post people_url, params: { person: { first_name: @person.first_name } }
+    end
+  end
+
+  test "should destroy five declensions" do
+    assert_difference('Declension.count', 0) do
+      delete person_url(@person)
+    end
+  end
+
   test "should get index" do
     get people_url
     assert_response :success
